@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; //NOt used here 
 
 class PostController extends Controller
 {
@@ -21,7 +21,7 @@ class PostController extends Controller
     public function show($post)
     {
         $post = ['id' => 1, 'title' => 'Laravel', 'description' => 'Show Post Description', 'posted_by' => 'Ahmed', 'created_at' => '2021-03-13'];
-
+      //dd($post);
         return view('posts.show', [
             'post' => $post
         ]);
@@ -36,6 +36,19 @@ class PostController extends Controller
     {
         //logic for saving in db
 
+        return redirect()->route('posts.index');
+    }
+
+    public function edit($post) 
+    {
+        // dd($post);
+        return view('posts.edit', [
+            'post'=> $post
+        ]);
+    }
+
+    public function update() 
+    {
         return redirect()->route('posts.index');
     }
 }

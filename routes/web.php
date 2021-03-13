@@ -22,15 +22,18 @@ Route::get('posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/create',[PostController::class,'create'])->name('posts.create');
 Route::post('posts',[PostController::class,'store'])->name('posts.store');
 Route::get('/posts/{post}',[PostController::class, 'show'])->name('posts.show');
+
+Route::get('/posts/{post}/edit',[PostController::class, 'edit'])->name('posts.edit');
+Route::put('/posts/{post}',[PostController::class, 'update'])->name('posts.update');
+
 //Route::get('test3', 'App\Http\Controllers\TestController@testAction'); just for learning
 
-Route::get('/test', function () {
-    $posts = [
-        ['id' => 1, 'title' => 'Laravel', 'posted_by' => 'Ahmed', 'created_at' => '2021-03-13'],
-        ['id' => 2, 'title' => 'JS', 'posted_by' => 'Mohamed', 'created_at' => '2021-03-25'],
-    ];
-
-    return view('test', [
-        'posts' => $posts
-    ]);
-});
+// Route::get('/test', function () {
+//     $posts = [
+//         ['id' => 1, 'title' => 'Laravel', 'posted_by' => 'Ahmed', 'created_at' => '2021-03-13'],
+//         ['id' => 2, 'title' => 'JS', 'posted_by' => 'Mohamed', 'created_at' => '2021-03-25'],
+//     ];
+//     return view('test', [
+//         'posts' => $posts
+//     ]);
+// });
