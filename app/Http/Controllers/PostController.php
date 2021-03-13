@@ -41,6 +41,7 @@ class PostController extends Controller
 
     public function edit($post) 
     {
+        $post = ['id' => 1, 'title' => 'Laravel', 'description' => 'Show Post Description', 'posted_by' => 'Ahmed', 'created_at' => '2021-03-13'];
         // dd($post);
         return view('posts.edit', [
             'post'=> $post
