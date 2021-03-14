@@ -12,7 +12,7 @@ class PostController extends Controller
     {
         $posts = Post::all();
         // dd($posts);
-
+        // dd($posts);
         return view('posts.index', [
             'posts' => $posts,
         ]);
@@ -22,7 +22,7 @@ class PostController extends Controller
     {
         // dd($post);
         $post = Post::find($post);
-        dd($post);
+        // dd($post);
         // dd($post->get());  // ?????????????????????????????????? ليه بيرجع كله 
         // $post = ['id' => 1, 'title' => 'Laravel', 'description' => 'Show Post Description', 'posted_by' => 'Ahmed', 'created_at' => '2021-03-13'];
       //dd($post);
@@ -40,9 +40,10 @@ class PostController extends Controller
 
     public function store(Request $myRequestObject)
     {
-        dd($myRequestObject);                //  ????????????????????????????? بترجع ايه 
+        // dd($myRequestObject);                //  ????????????????????????????? بترجع ايه 
         // dd($myRequestObject->all());
         $data = $myRequestObject->all();
+        dd($data);
         //$data = request()->all();
         // request()->title == $data['title']
 
@@ -68,15 +69,31 @@ class PostController extends Controller
 
     public function edit($post) 
     {
-        $post = ['id' => 1, 'title' => 'Laravel', 'description' => 'Show Post Description', 'posted_by' => 'Ahmed', 'created_at' => '2021-03-13'];
+        // $post = ['id' => 1, 'title' => 'Laravel', 'description' => 'Show Post Description', 'posted_by' => 'Ahmed', 'created_at' => '2021-03-13'];
+        // dd($post);
+        $post = Post::find($post);
         // dd($post);
         return view('posts.edit', [
-            'post'=> $post
+            'post'=> $post,
+            'users'=> User::all(),
         ]);
     }
 
-    public function update() 
+    public function update($post) 
     {
+        // dd($post);
+        $data = request()->all();
+        Post::find($post)->update($data);
+        // dd($data);
         return redirect()->route('posts.index');
     }
+
+    public function destroy($post) 
+    {
+        // dd($post);
+        // Post::table('posts')->where('id', '=', 100)->delete();
+        // Post::where('id','=' ,$post)->delete();
+        Post::destroy($post);
+        return redirect()->route('posts.index');
+    } 
 }

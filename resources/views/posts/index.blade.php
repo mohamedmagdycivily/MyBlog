@@ -20,10 +20,18 @@
             <td>{{$post->title}}</td>
             <td>{{$post->user ? $post->user->name : 'user not found'}}</td>
             <td>{{$post->created_at}}</td>
-            <td class="col">
-                <a href="{{ route('posts.show', [ 'post' => $post['id'] ]) }}" class="btn btn-info">View</a>
-                <a href="{{ route('posts.edit', ['post' => $post['id'] ]) }}" class="btn btn-primary">Edit</a>
-                <a href="#" class="btn btn-danger">Delete</a>
+            <td class="col"  style="display: flex;" >
+
+                <a style="margin-right: 5px;" href="{{ route('posts.show', [ 'post' => $post['id']]) }}" class="btn btn-info">View</a>
+
+                <a style="margin-right: 5px;" href="{{ route('posts.edit', ['post' => $post['id']]) }}" class="btn btn-primary">Edit</a>
+
+                <form method="post" action="{{ route('posts.destroy', ['post' => $post['id']]) }}">
+                  @csrf
+                  {{ method_field("DELETE") }}
+                  <input type="submit" onclick="return confirm ('are you sure?')" class="btn btn-danger" value="Delete"> 
+                </form>
+
             </td>
           </tr>
           @endforeach
