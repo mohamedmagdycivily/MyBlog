@@ -16,10 +16,10 @@
         <tbody>
           @foreach($posts as $post)
           <tr>
-            <th scope="row">{{$post['id']}}</th>
-            <td>{{$post['title']}}</td>
-            <td>{{$post['posted_by']}}</td>
-            <td>{{$post['created_at']}}</td>
+            <th scope="row">{{$post->id}}</th>
+            <td>{{$post->title}}</td>
+            <td>{{$post->user ? $post->user->name : 'user not found'}}</td>
+            <td>{{$post->created_at}}</td>
             <td class="col">
                 <a href="{{ route('posts.show', [ 'post' => $post['id'] ]) }}" class="btn btn-info">View</a>
                 <a href="{{ route('posts.edit', ['post' => $post['id'] ]) }}" class="btn btn-primary">Edit</a>
