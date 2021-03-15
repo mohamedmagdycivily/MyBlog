@@ -11,6 +11,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
+        $posts = Post::paginate(2);
         // dd($posts);
         // dd($posts);
         return view('posts.index', [
@@ -43,7 +44,7 @@ class PostController extends Controller
         // dd($myRequestObject);                //  ????????????????????????????? بترجع ايه 
         // dd($myRequestObject->all());
         $data = $myRequestObject->all();
-        dd($data);
+        // dd($data);
         //$data = request()->all();
         // request()->title == $data['title']
 
