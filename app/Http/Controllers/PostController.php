@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request; //NOt used here 
+use App\Http\Requests\StorePostRequest;
 
 class PostController extends Controller
 {
@@ -23,6 +24,7 @@ class PostController extends Controller
     {
         // dd($post);
         $post = Post::find($post);
+        
         // dd($post);
         // dd($post->get());  // ?????????????????????????????????? ليه بيرجع كله 
         // $post = ['id' => 1, 'title' => 'Laravel', 'description' => 'Show Post Description', 'posted_by' => 'Ahmed', 'created_at' => '2021-03-13'];
@@ -39,8 +41,16 @@ class PostController extends Controller
         ]);
     }
 
-    public function store(Request $myRequestObject)
+    public function store(StorePostRequest $myRequestObject) //changed the type from request to StorePostRequest
     {
+        // $myRequestObject->validate([
+        //     'title' => ['required', 'min:3'],
+        //     'description' => ['required']
+        // ],[
+        //     'title.required' => 'watch out the title is required dadasd',
+        //     'title.min' => 'override the min',
+        // ]);
+        
         // dd($myRequestObject);                //  ????????????????????????????? بترجع ايه 
         // dd($myRequestObject->all());
         $data = $myRequestObject->all();
