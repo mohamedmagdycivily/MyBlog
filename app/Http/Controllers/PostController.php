@@ -36,6 +36,7 @@ class PostController extends Controller
 
     public function create()
     {
+        // dd(User::all());
         return view('posts.create',[
             'users' => User::all()
         ]);
@@ -90,10 +91,10 @@ class PostController extends Controller
         ]);
     }
 
-    public function update($post) 
+    public function update($post, StorePostRequest $myRequestObject) 
     {
-        // dd($post);
-        $data = request()->all();
+        // dd($myRequestObject->all());
+        $data = $myRequestObject->all();
         Post::find($post)->update($data);
         // dd($data);
         return redirect()->route('posts.index');

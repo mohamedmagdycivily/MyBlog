@@ -24,7 +24,7 @@ class StorePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'min:3'],
+            'title' => ['required', 'min:3', 'unique:posts'], //, 'unique:App\Models\Post, title'
             'description' => ['required']
         ];
     }
@@ -34,6 +34,7 @@ class StorePostRequest extends FormRequest
         return [
             'title.required' => 'watch out the title is required',
             'title.min' => 'override the min',
+            'title.unique'=>'title already used',
         ];
     }
 }

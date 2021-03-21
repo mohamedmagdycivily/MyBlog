@@ -9,6 +9,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">title</th>
+            <th scope='col'>slug</th>
             <th scope="col">posted by</th>
             <th scope="col">created at</th>
             <th scope="col">actions</th>
@@ -19,6 +20,7 @@
           <tr>
             <th scope="row">{{$post->id}}</th>
             <td>{{$post->title}}</td>
+            <td>{{$post->slug}}</td>
             <td>{{$post->user ? $post->user->name : 'user not found'}}</td>
             <td>{{$post->created_at}}</td>
             <td class="col"  style="display: flex;" >
